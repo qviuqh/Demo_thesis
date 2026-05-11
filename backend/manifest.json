@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-05-10T15:47:03.510837Z",
+  "source_dataset": "/kaggle/input/datasets/thnquangvinh/demo-data/data/demo",
+  "source_csv": "/kaggle/input/datasets/thnquangvinh/demo-data/data/demo/demo.csv",
+  "source_images": "/kaggle/input/datasets/thnquangvinh/demo-data/data/demo/images",
+  "checkpoint": "/kaggle/input/models/thnquangvinh/m4/pytorch/default/1/checkpoints/M4_CLIP_FullFT_final.pth",
+  "model": "M4_CLIP_FullFT",
+  "clip_model_name": "openai/clip-vit-base-patch32",
+  "embedding_dim": 512,
+  "num_items": 8852,
+  "index_type": "faiss.IndexFlatIP",
+  "mapping": "FAISS indices are row positions in demo_products.csv and demo_embeddings.npy",
+  "similarity": "cosine_similarity via normalized inner product",
+  "max_text_tokens": 77,
+  "image_size": 224,
+  "image_url_rule": "/images/{id}.jpg"
+}
