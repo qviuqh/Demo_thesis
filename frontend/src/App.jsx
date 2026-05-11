@@ -1,6 +1,6 @@
 // App.jsx — main state management and layout
 import { useEffect, useRef, useState } from "react";
-import { api } from "./services/api";
+import { api } from "./api/api";
 import ProductGrid from "./components/ProductGrid";
 import ProductDetail from "./components/ProductDetail";
 import RecommendationList from "./components/RecommendationList";
