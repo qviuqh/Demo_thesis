@@ -13,9 +13,7 @@ import numpy as np
 import faiss
 import os
 
-# ─────────────────────────────────────────────
 # Paths
-# ─────────────────────────────────────────────
 BASE_DIR      = Path(__file__).parent
 CSV_PATH      = BASE_DIR / "demo_products.csv"
 EMB_PATH      = BASE_DIR / "demo_embeddings.npy"
@@ -23,9 +21,9 @@ INDEX_PATH    = BASE_DIR / "demo_faiss.index"
 IMAGES_DIR    = BASE_DIR / "demo_images"
 PLACEHOLDER   = IMAGES_DIR / "placeholder.jpg"
 
-# ─────────────────────────────────────────────
+
 # Startup: load artifacts once into memory
-# ─────────────────────────────────────────────
+
 print("Loading artifacts …")
 df          = pd.read_csv(CSV_PATH)
 embeddings  = np.load(EMB_PATH).astype("float32")
@@ -44,9 +42,9 @@ EMBEDDING_DIM = embeddings.shape[1]
 print(f"  ✓ {len(df):,} products  |  dim={EMBEDDING_DIM}  |  FAISS ntotal={index.ntotal}")
 
 
-# ─────────────────────────────────────────────
+
 # Helpers
-# ─────────────────────────────────────────────
+
 def row_to_dict(row: pd.Series, base_url: str = "http://localhost:8000") -> dict:
     """Convert a DataFrame row to a clean product dict."""
     item_id = int(row["id"])
@@ -89,9 +87,9 @@ def compute_grade(q: pd.Series, c: pd.Series) -> int:
 GRADE_LABELS = {3: "Highly Relevant", 2: "Relevant", 1: "Partially Relevant", 0: "Not Relevant"}
 
 
-# ─────────────────────────────────────────────
+
 # App
-# ─────────────────────────────────────────────
+
 app = FastAPI(
     title="Fashion Retrieval Demo API",
     description="Visual-Semantic Item-to-Item Recommendation",
@@ -110,9 +108,9 @@ app.add_middleware(
 app.mount("/images", StaticFiles(directory=str(IMAGES_DIR)), name="images")
 
 
-# ─────────────────────────────────────────────
+
 # Endpoints
-# ─────────────────────────────────────────────
+
 
 @app.get("/health")
 def health():
